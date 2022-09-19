@@ -1,0 +1,13 @@
+version: '3.8'
+
+volumes:
+  pgdata:
+  pgadmin-data:
+  pwd:
+
+services:
+  db:
+    image: ghusta/postgres-world-db:2.6
+    restart: always
+    ports:
+      - 5432:5432

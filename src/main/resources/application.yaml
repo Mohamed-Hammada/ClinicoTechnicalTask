@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: Clinical Assignment
+  datasource:
+    url: jdbc:postgresql://${POSTGRESS_HOST:localhost}:5432/world-db
+    username: ${POSTGRESS_CLINICAL_USER_NAME:world}
+    password: ${POSTGRESS_CLINICAL_PASSWORD:world123}
+  jackson:
+    property-naming-strategy: com.fasterxml.jackson.databind.PropertyNamingStrategy.SnakeCaseStrategy
+  jpa:
+    properties:
+      hibernate:
+        physical_naming_strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
