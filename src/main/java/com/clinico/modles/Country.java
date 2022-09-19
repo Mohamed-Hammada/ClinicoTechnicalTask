@@ -41,7 +41,7 @@ public class Country implements Serializable {
     private Integer indepYear;
 
     @Column(name="life_expectancy")
-    private float lifeExpectancy;
+    private Float lifeExpectancy;
 
     @Column(name="local_name", nullable=false)
     private String localName;
@@ -56,7 +56,7 @@ public class Country implements Serializable {
     private String region;
 
     @Column(name="surface_area", nullable=false)
-    private float surfaceArea;
+    private Float surfaceArea;
 
     @OneToMany(mappedBy="country")
     private List<City> cities;

@@ -18,7 +18,7 @@ public class CountryLanguage implements Serializable {
     private Boolean isOfficial;
 
     @Column(nullable=false)
-    private float percentage;
+    private Float percentage;
 
     @ManyToOne
     @JoinColumn(name="country_code", nullable=false, insertable=false, updatable=false)
