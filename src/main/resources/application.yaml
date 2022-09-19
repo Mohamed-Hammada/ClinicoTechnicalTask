@@ -11,3 +11,9 @@ spring:
     properties:
       hibernate:
         physical_naming_strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+
+logging:
+  pattern:
+    dateformat: yyyy-MM-dd
+  file:
+    name: ./logs/${spring.application.name}.log
