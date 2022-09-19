@@ -1,6 +1,7 @@
 package com.clinico.service.implementation;
 
 import com.clinico.dto.CountryInformation;
+import com.clinico.exception.InvalidValue;
 import com.clinico.modles.Country;
 import com.clinico.modles.CountryLanguage;
 import com.clinico.repositories.CountryRepository;
@@ -20,15 +21,16 @@ public class CountryServiceImplementation implements CountryService {
     @Override
     public CountryInformation getCountryInformation(String code) {
         Optional<Country> country=countryRepository.findByCode(code);
-        if (country.isPresent())
-            return CountryInformation.builder()
-                    .population(country.get().getPopulation())
-                    .continent(country.get().getContinent())
-                    .lifeExpectancy(generalUtils.getNumber(country.get().getLifeExpectancy()))
-                    .name(country.get().getName())
-                    .countryLanguage(getCountryOfficialLanguage(country.get()))
-                    .build();
-        throw new RuntimeException();
+        if (country.isEmpty())
+            throw new InvalidValue();
+        return CountryInformation.builder()
+                .population(country.get().getPopulation())
+                .continent(country.get().getContinent())
+                .lifeExpectancy(generalUtils.getNumber(country.get().getLifeExpectancy()))
+                .name(country.get().getName())
+                .countryLanguage(getCountryOfficialLanguage(country.get()))
+                .build();
+
     }
 
     private String getCountryOfficialLanguage(Country country) {
